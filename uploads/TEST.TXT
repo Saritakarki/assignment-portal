@@ -1,0 +1,61 @@
+SQL> SELECT *FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+COUNTRIES                      TABLE                                            
+DEPARTMENTS                    TABLE                                            
+EMPLOYEES                      TABLE                                            
+EMP_DETAILS_VIEW               VIEW                                             
+JOBS                           TABLE                                            
+JOB_HISTORY                    TABLE                                            
+LOCATIONS                      TABLE                                            
+REGIONS                        TABLE                                            
+
+8 rows selected.
+
+SQL> DESC COUNTRIES;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COUNTRY_ID                                NOT NULL CHAR(2)
+ COUNTRY_NAME                                       VARCHAR2(40)
+ REGION_ID                                          NUMBER
+
+SQL> SELECT *FROM COUNTRIES;
+
+CO COUNTRY_NAME                              REGION_ID                          
+-- ---------------------------------------- ----------                          
+AR Argentina                                         2                          
+AU Australia                                         3                          
+BE Belgium                                           1                          
+BR Brazil                                            2                          
+CA Canada                                            2                          
+CH Switzerland                                       1                          
+CN China                                             3                          
+DE Germany                                           1                          
+DK Denmark                                           1                          
+EG Egypt                                             4                          
+FR France                                            1                          
+
+CO COUNTRY_NAME                              REGION_ID                          
+-- ---------------------------------------- ----------                          
+IL Israel                                            4                          
+IN India                                             3                          
+IT Italy                                             1                          
+JP Japan                                             3                          
+KW Kuwait                                            4                          
+ML Malaysia                                          3                          
+MX Mexico                                            2                          
+NG Nigeria                                           4                          
+NL Netherlands                                       1                          
+SG Singapore                                         3                          
+UK United Kingdom                                    1                          
+
+CO COUNTRY_NAME                              REGION_ID                          
+-- ---------------------------------------- ----------                          
+US United States of America                          2                          
+ZM Zambia                                            4                          
+ZW Zimbabwe                                          4                          
+
+25 rows selected.
+
+SQL> SPOOL OFF;
