@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<h:html xmlns:jr="http://openrosa.org/javarosa" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:kobo="http://www.kobotoolbox.org/xmlns" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title ref="jr:itext('Consumer_Awareness_Campaign_Dipstick')">Consumer Awareness Campaign Dipstick</h:title>
+    <model>
+      <instance>
+        <Consumer_Awareness_Campaign_Dipstick id="Consumer_Awareness_Campaign_Dipstick" Formversion="1.0">
+          <deviceid/>
+          <start/>
+          <end/>
+          <respondentName/>
+          <area/>
+          <contact/>
+          <age/>
+          <education/>
+          <occupation/>
+          <recallNepaliPaperAd/>
+          <recallFmAd/>
+          <noticedAd/>
+          <rememberAboutAd/>
+          <rememberAboutAdOtherSpecify/>
+          <abtNangoSaboon/>
+          <madeOF/>
+          <importanceOfLabel/>
+          <soapType/>
+          <switchedRecently/>
+          <gps/>
+	  <meta>
+		  <instanceName/>
+		  <instanceID/>
+		  <instanceHistory/>
+	  </meta>
+        </Consumer_Awareness_Campaign_Dipstick>
+      </instance>
+      <bind id="deviceid" nodeset="/Consumer_Awareness_Campaign_Dipstick/deviceid" type="xsd:string" jr:preload="property" jr:preloadParams="deviceid" visible="false()"/>
+      <bind id="start" nodeset="/Consumer_Awareness_Campaign_Dipstick/start" type="xsd:time" jr:preload="timestamp" jr:preloadParams="start" visible="false()"/>
+      <bind id="end" nodeset="/Consumer_Awareness_Campaign_Dipstick/end" type="xsd:time" jr:preload="timestamp" jr:preloadParams="end" visible="false()"/>
+      <bind id="respondentName" nodeset="/Consumer_Awareness_Campaign_Dipstick/respondentName" type="xsd:string" required="true()"/>
+      <bind id="area" nodeset="/Consumer_Awareness_Campaign_Dipstick/area" type="xsd:string" required="true()"/>
+      <bind id="contact" nodeset="/Consumer_Awareness_Campaign_Dipstick/contact" type="xsd:string" constraint="regex(., '^[0-9]{10}')" jr:constraintMsg="Mobile Number Invalid"/>
+      <bind id="age" nodeset="/Consumer_Awareness_Campaign_Dipstick/age" type="xsd:int" required="true()" constraint=". &lt;= 35 and . &gt;= 18" jr:constraintMsg="Age Only 18 to 35"/>
+      <bind id="education" nodeset="/Consumer_Awareness_Campaign_Dipstick/education" type="xsd:string" required="true()"/>
+      <bind id="occupation" nodeset="/Consumer_Awareness_Campaign_Dipstick/occupation" type="xsd:string" required="true()"/>
+      <bind id="recallNepaliPaperAd" nodeset="/Consumer_Awareness_Campaign_Dipstick/recallNepaliPaperAd" type="xsd:string" required="true()"/>
+      <bind id="recallFmAd" nodeset="/Consumer_Awareness_Campaign_Dipstick/recallFmAd" type="xsd:string" required="true()"/>
+      <bind id="noticedAd" nodeset="/Consumer_Awareness_Campaign_Dipstick/noticedAd" type="xsd:string" required="true()"/>
+      <bind id="rememberAboutAd" nodeset="/Consumer_Awareness_Campaign_Dipstick/rememberAboutAd" type="xsd:string" required="true()" relevant="/Consumer_Awareness_Campaign_Dipstick/recallNepaliPaperAd = '1' or /Consumer_Awareness_Campaign_Dipstick/recallFmAd = '1' or /Consumer_Awareness_Campaign_Dipstick/noticedAd = '1'"/>
+      <bind id="rememberAboutAdOtherSpecify" nodeset="/Consumer_Awareness_Campaign_Dipstick/rememberAboutAdOtherSpecify" type="xsd:string" required="true()" relevant="selected(/Consumer_Awareness_Campaign_Dipstick/rememberAboutAd,'3')"/>
+      <bind id="abtNangoSaboon" nodeset="/Consumer_Awareness_Campaign_Dipstick/abtNangoSaboon" type="xsd:string" required="true()"/>
+      <bind id="madeOF" nodeset="/Consumer_Awareness_Campaign_Dipstick/madeOF" type="xsd:string" required="true()"/>
+      <bind id="importanceOfLabel" nodeset="/Consumer_Awareness_Campaign_Dipstick/importanceOfLabel" type="xsd:string" required="true()"/>
+      <bind id="soapType" nodeset="/Consumer_Awareness_Campaign_Dipstick/soapType" type="xsd:string" required="true()"/>
+      <bind id="switchedRecently" nodeset="/Consumer_Awareness_Campaign_Dipstick/switchedRecently" type="xsd:string" required="true()"/>
+      <bind id="gps" nodeset="/Consumer_Awareness_Campaign_Dipstick/gps" type="geopoint" required="true()"/>
+	<bind calculate="concat(/Consumer_Awareness_Campaign_Dipstick/area,'-',/Consumer_Awareness_Campaign_Dipstick/respondentName)" id="instanceName" nodeset="/Consumer_Awareness_Campaign_Dipstick/meta/instanceName" readonly="true()" type="xsd:string"/>
+     <bind calculate="concat('uuid:', uuid())" id="instanceID" nodeset="/Consumer_Awareness_Campaign_Dipstick/meta/instanceID" readonly="true()" type="xsd:string"/>
+     <bind id="instanceHistory" nodeset="/Consumer_Awareness_Campaign_Dipstick/meta/instanceHistory" type="xsd:string" visible="false()"/>
+      <itext>
+        <translation lang="English">
+          <text id="Consumer_Awareness_Campaign_Dipstick">
+            <value>Consumer Awareness Campaign dipstick</value>
+          </text>
+          <text id="respondentName">
+            <value>1. Name of respondent: </value>
+          </text>
+          <text id="area">
+            <value>2. Area:	</value>
+          </text>
+          <text id="contact">
+            <value>3. Contact: </value>
+          </text>
+          <text id="contact-hint">
+            <value>(mob)</value>
+          </text>
+          <text id="age">
+            <value>5. Age:</value>
+          </text>
+          <text id="education">
+            <value>7. Education level:</value>
+          </text>
+          <text id="educationIlletrate">
+            <value>a. अशिक्षित</value>
+          </text>
+          <text id="educationLiterate">
+            <value>b. शिक्षित</value>
+          </text>
+          <text id="educationUnderSlc">
+            <value>c. एस्एलसि</value>
+          </text>
+          <text id="education10Plus2">
+            <value>d. १०+२</value>
+          </text>
+          <text id="educationBachelors">
+            <value>e. स्नातक</value>
+          </text>
+          <text id="educationMAsterssAbove">
+            <value>f. स्नातकोत्तर वा सो भन्दा माथि</value>
+          </text>
+          <text id="occupation">
+            <value>8. Occupation:</value>
+          </text>
+          <text id="occupationStudent">
+            <value>a. विद्यार्थी</value>
+          </text>
+          <text id="occupationBusinessSelf">
+            <value>b. व्यापार/ स्वरोजगार</value>
+          </text>
+          <text id="occupationCoperate">
+            <value>c. कोर्पोरेट कर्मचारी</value>
+          </text>
+          <text id="occupationNgoIngo">
+            <value>d. गैर सरकारी संस्था / अन्तराष्ट्रिय गैर सरकारि संस्था</value>
+          </text>
+          <text id="occupationGovtEmployee">
+            <value>e. सरकारी कर्मचारी</value>
+          </text>
+          <text id="occupationHousewife">
+            <value>f. गृहिणी</value>
+          </text>
+          <text id="occupationUnEmployed">
+            <value>g. बेरोजगार</value>
+          </text>
+          <text id="recallNepaliPaperAd">
+            <value>1) Do you recall any recent Nepali News paper ad (prompt Katai Tapai ko Nango Saboon mah Boso tah Chaina)</value>
+          </text>
+          <text id="recallNepaliPaperAdYes">
+            <value>छ</value>
+          </text>
+          <text id="recallNepaliPaperAdNo">
+            <value>छैन</value>
+          </text>
+          <text id="recallFmAd">
+            <value>2) Do you recall any recent Nepali FM ad ( Label Chahincha Label)</value>
+          </text>
+          <text id="recallFmAdYes">
+            <value>छ</value>
+          </text>
+          <text id="recallFmAdNo">
+            <value>छैन</value>
+          </text>
+          <text id="noticedAd">
+            <value>3) Have you noticed “ Katai Tapai ko Nango Saboon mah Boso tah Chaina” Ad (Non Aided/ Aided)</value>
+          </text>
+          <text id="noticedAdYes">
+            <value>छ</value>
+          </text>
+          <text id="noticedAdNo">
+            <value>छैन</value>
+          </text>
+          <text id="rememberAboutAd">
+            <value>4) What do you remember from the Ad</value>
+          </text>
+          <text id="rememberAboutAdBoso">
+            <value>a) नाङ्गो साबुनमा बोसो हुन सक्छ</value>
+          </text>
+          <text id="rememberAboutAdLabel">
+            <value>b) सामानमा लेबल हुन जरुरि छ</value>
+          </text>
+          <text id="rememberAboutAdOther">
+            <value>c) अन्य</value>
+          </text>
+          <text id="rememberAboutAdOtherSpecify">
+            <value> Others Specify</value>
+          </text>
+          <text id="abtNangoSaboon">
+            <value>5) What do you know about “Nango Saboon”</value>
+          </text>
+          <text id="abtNangoSaboonBoso">
+            <value>बोसो</value>
+          </text>
+          <text id="abtNangoSaboonLabel">
+            <value>लेबल</value>
+          </text>
+          <text id="abtNangoSaboonLuga">
+            <value>लुगा धुने साबुन</value>
+          </text>
+          <text id="abtNangoSaboonHarmful">
+            <value>हानिकारक</value>
+          </text>
+          <text id="madeOF">
+            <value>6) Do you know what it is made of</value>
+          </text>
+          <text id="madeOFYes">
+            <value>छ</value>
+          </text>
+          <text id="madeOFNo">
+            <value>छैन</value>
+          </text>
+          <text id="importanceOfLabel">
+            <value>7) How important is label to you in products you use</value>
+          </text>
+          <text id="importanceOfLabelVery">
+            <value>एकदमै महत्त्वपूर्ण</value>
+          </text>
+          <text id="importanceOfLabelRequired">
+            <value>चाहिन्छ</value>
+          </text>
+          <text id="importanceOfLabelDont">
+            <value>खासै फरक पर्दैन</value>
+          </text>
+          <text id="soapType">
+            <value>8) Which Soap do you use for washing clothes</value>
+          </text>
+          <text id="soapTypeWrapped">
+            <value>बेरिएको</value>
+          </text>
+          <text id="soapTypeUnwrapped">
+            <value>नाङ्गो</value>
+          </text>
+          <text id="switchedRecently">
+            <value>9) Have you switched recently or plan to switch</value>
+          </text>
+          <text id="gps">
+            <value>Record GPS location of interview</value>
+          </text>
+        </translation>
+        <translation lang="Nepali" default="true()">
+          <text id="Consumer_Awareness_Campaign_Dipstick">
+            <value>Consumer Awareness Campaign dipstick</value>
+          </text>
+          <text id="respondentName">
+            <value>1. नामः  </value>
+          </text>
+          <text id="area">
+            <value>2. ठेगानाः </value>
+          </text>
+          <text id="contact">
+            <value>3. कन्ट्याक्ट: </value>
+          </text>
+          <text id="contact-hint">
+            <value>(मोबाइल)</value>
+          </text>
+          <text id="age">
+            <value>5. उमेरः</value>
+          </text>
+          <text id="education">
+            <value>7. शैक्षिक अवस्था:</value>
+          </text>
+          <text id="educationIlletrate">
+            <value>a. अशिक्षित</value>
+          </text>
+          <text id="educationLiterate">
+            <value>b. शिक्षित</value>
+          </text>
+          <text id="educationUnderSlc">
+            <value>c. एस्एलसि </value>
+          </text>
+          <text id="education10Plus2">
+            <value>d. १०+२</value>
+          </text>
+          <text id="educationBachelors">
+            <value>e. स्नातक</value>
+          </text>
+          <text id="educationMAsterssAbove">
+            <value>f. स्नातकोत्तर वा सो भन्दा माथि</value>
+          </text>
+          <text id="occupation">
+            <value>8. पेशाः </value>
+          </text>
+          <text id="occupationStudent">
+            <value>a. विद्यार्थी</value>
+          </text>
+          <text id="occupationBusinessSelf">
+            <value>b. व्यापार/ स्वरोजगार</value>
+          </text>
+          <text id="occupationCoperate">
+            <value>c. कोर्पोरेट कर्मचारी</value>
+          </text>
+          <text id="occupationNgoIngo">
+            <value>d. गैर सरकारी संस्था / अन्तराष्ट्रिय गैर सरकारि संस्था</value>
+          </text>
+          <text id="occupationGovtEmployee">
+            <value>e. सरकारी कर्मचारी</value>
+          </text>
+          <text id="occupationHousewife">
+            <value>f. गृहिणी</value>
+          </text>
+          <text id="occupationUnEmployed">
+            <value>g. बेरोजगार</value>
+          </text>
+          <text id="recallNepaliPaperAd">
+            <value>1) के  तपाईँलाई हालसालै आएको कुनै नेपाली पत्रिकाको विज्ञापन याद छ? (prompt “के तपाईँको नाङ्गो साबुनमा बोसो त छैन”)</value>
+          </text>
+          <text id="recallNepaliPaperAdYes">
+            <value>छ </value>
+          </text>
+          <text id="recallNepaliPaperAdNo">
+            <value>छैन</value>
+          </text>
+          <text id="recallFmAd">
+            <value>2) के  तपाईँलाई हालसालै आएको कुनै नेपाली एफएमको विज्ञापन याद छ? (लेबल चाहिन्छ लेबल)</value>
+          </text>
+          <text id="recallFmAdYes">
+            <value>छ</value>
+          </text>
+          <text id="recallFmAdNo">
+            <value>छैन</value>
+          </text>
+          <text id="noticedAd">
+            <value>3) के  तपाईँले हालसालै “के तपाईँको नाङ्गो साबुनमा बोसो त छैन” विज्ञापन याद गर्नुभएको छ?(Non Aided/ Aided)</value>
+          </text>
+          <text id="noticedAdYes">
+            <value>छ</value>
+          </text>
+          <text id="noticedAdNo">
+            <value>छैन </value>
+          </text>
+          <text id="rememberAboutAd">
+            <value>4) तपाईँलाई त्यो विज्ञापनको बारेमा के याद छ?</value>
+          </text>
+          <text id="rememberAboutAdBoso">
+            <value>a) नाङ्गो साबुनमा बोसो हुन सक्छ</value>
+          </text>
+          <text id="rememberAboutAdLabel">
+            <value>b) सामानमा लेबल हुन जरुरि छ</value>
+          </text>
+          <text id="rememberAboutAdOther">
+            <value>c) अन्य</value>
+          </text>
+          <text id="rememberAboutAdOtherSpecify">
+            <value> अन्य उल्लेख गर्नुहोस</value>
+          </text>
+          <text id="abtNangoSaboon">
+            <value>5) तपाईँलाई "नाङ्गो साबुन"को बारेमा के थाहा छ?</value>
+          </text>
+          <text id="abtNangoSaboonBoso">
+            <value>बोसो</value>
+          </text>
+          <text id="abtNangoSaboonLabel">
+            <value>लेबल</value>
+          </text>
+          <text id="abtNangoSaboonLuga">
+            <value>लुगा धुने साबुन</value>
+          </text>
+          <text id="abtNangoSaboonHarmful">
+            <value>हानिकारक</value>
+          </text>
+          <text id="madeOF">
+            <value>6) तपाईँलाई नाङ्गो साबुन के सामानले बनेको हुन्छ थाहा छ?</value>
+          </text>
+          <text id="importanceOfLabel">
+            <value>7) तपाईँलाई आफूले प्रयोग गर्ने सामानमा त्यसको लेबल कतिको महत्वपूर्ण लाग्दछ?</value>
+          </text>
+          <text id="importanceOfLabelVery">
+            <value>एकदमै महत्त्वपूर्ण </value>
+          </text>
+          <text id="importanceOfLabelRequired">
+            <value>चाहिन्छ </value>
+          </text>
+          <text id="importanceOfLabelDont">
+            <value>खासै फरक पर्दैन </value>
+          </text>
+          <text id="soapType">
+            <value>8) लुगा धुन कुन साबुनको प्रयोग गर्नुहुन्छ?</value>
+          </text>
+          <text id="soapTypeWrapped">
+            <value>खोल भएको</value>
+          </text>
+          <text id="soapTypeUnwrapped">
+            <value> नाङ्गो </value>
+          </text>
+          <text id="switchedRecently">
+            <value>9) के तपाईँले हालसालै आफूले प्रयोग गर्ने साबुनमा परिवर्तन(change) ल्याउनुभएको छ?</value>
+          </text>
+          <text id="madeOFYes">
+            <value>छ</value>
+          </text>
+          <text id="madeOFNo">
+            <value>छैन </value>
+          </text>
+          <text id="gps">
+            <value>Record GPS location of interview</value>
+          </text>
+        </translation>
+      </itext>
+    </model>
+  </h:head>
+  <h:body>
+    <group appearance="field-list">
+      
+      <input bind="respondentName">
+        <label ref="jr:itext('respondentName')"/>
+      </input>
+      <input bind="area">
+        <label ref="jr:itext('area')"/>
+      </input>
+    </group>
+    <input bind="contact" appearance="numbers">
+      <label ref="jr:itext('contact')"/>
+      <hint ref="jr:itext('contact-hint')"/>
+    </input>
+    <input bind="age">
+      <label ref="jr:itext('age')"/>
+    </input>
+    <select1 bind="education">
+      <label ref="jr:itext('education')"/>
+      <item>
+        <label ref="jr:itext('educationIlletrate')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('educationLiterate')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('educationUnderSlc')"/>
+        <value>3</value>
+      </item>
+      <item>
+        <label ref="jr:itext('education10Plus2')"/>
+        <value>4</value>
+      </item>
+      <item>
+        <label ref="jr:itext('educationBachelors')"/>
+        <value>5</value>
+      </item>
+      <item>
+        <label ref="jr:itext('educationMAsterssAbove')"/>
+        <value>6</value>
+      </item>
+    </select1>
+    <select1 bind="occupation">
+      <label ref="jr:itext('occupation')"/>
+      <item>
+        <label ref="jr:itext('occupationStudent')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('occupationBusinessSelf')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('occupationCoperate')"/>
+        <value>3</value>
+      </item>
+      <item>
+        <label ref="jr:itext('occupationNgoIngo')"/>
+        <value>4</value>
+      </item>
+      <item>
+        <label ref="jr:itext('occupationGovtEmployee')"/>
+        <value>5</value>
+      </item>
+      <item>
+        <label ref="jr:itext('occupationHousewife')"/>
+        <value>6</value>
+      </item>
+      <item>
+        <label ref="jr:itext('occupationUnEmployed')"/>
+        <value>7</value>
+      </item>
+    </select1>
+    <group appearance="field-list">
+      
+      <select1 bind="recallNepaliPaperAd">
+        <label ref="jr:itext('recallNepaliPaperAd')"/>
+        <item>
+          <label ref="jr:itext('recallNepaliPaperAdYes')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('recallNepaliPaperAdNo')"/>
+          <value>2</value>
+        </item>
+      </select1>
+      <select1 bind="recallFmAd">
+        <label ref="jr:itext('recallFmAd')"/>
+        <item>
+          <label ref="jr:itext('recallFmAdYes')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('recallFmAdNo')"/>
+          <value>2</value>
+        </item>
+      </select1>
+      <select1 bind="noticedAd">
+        <label ref="jr:itext('noticedAd')"/>
+        <item>
+          <label ref="jr:itext('noticedAdYes')"/>
+          <value>1</value>
+        </item>
+        <item>
+          <label ref="jr:itext('noticedAdNo')"/>
+          <value>2</value>
+        </item>
+      </select1>
+    </group>
+    <select bind="rememberAboutAd">
+      <label ref="jr:itext('rememberAboutAd')"/>
+      <item>
+        <label ref="jr:itext('rememberAboutAdBoso')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('rememberAboutAdLabel')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('rememberAboutAdOther')"/>
+        <value>3</value>
+      </item>
+    </select>
+    <input bind="rememberAboutAdOtherSpecify">
+      <label ref="jr:itext('rememberAboutAdOtherSpecify')"/>
+    </input>
+    <select bind="abtNangoSaboon">
+      <label ref="jr:itext('abtNangoSaboon')"/>
+      <item>
+        <label ref="jr:itext('abtNangoSaboonBoso')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('abtNangoSaboonLabel')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('abtNangoSaboonLuga')"/>
+        <value>3</value>
+      </item>
+      <item>
+        <label ref="jr:itext('abtNangoSaboonHarmful')"/>
+        <value>4</value>
+      </item>
+    </select>
+    <group appearance="field-list">
+    <select1 bind="madeOF">
+      <label ref="jr:itext('madeOF')"/>
+      <item>
+        <label ref="jr:itext('madeOFYes')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('madeOFNo')"/>
+        <value>2</value>
+      </item>
+    </select1>
+    <select1 bind="importanceOfLabel">
+      <label ref="jr:itext('importanceOfLabel')"/>
+      <item>
+        <label ref="jr:itext('importanceOfLabelVery')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('importanceOfLabelRequired')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('importanceOfLabelDont')"/>
+        <value>3</value>
+      </item>
+    </select1>
+   </group>
+    <group appearance="field-list">
+    <select1 bind="soapType">
+      <label ref="jr:itext('soapType')"/>
+      <item>
+        <label ref="jr:itext('soapTypeWrapped')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('soapTypeUnwrapped')"/>
+        <value>2</value>
+      </item>
+    </select1>
+    <select1 bind="switchedRecently">
+      <label ref="jr:itext('switchedRecently')"/>
+      <item>
+        <label ref="jr:itext('madeOFYes')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('madeOFNo')"/>
+        <value>2</value>
+      </item>
+    </select1>
+    </group>
+    <input bind="gps">
+      <label ref="jr:itext('gps')"/>
+    </input>
+  </h:body>
+</h:html>

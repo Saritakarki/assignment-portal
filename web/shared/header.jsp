@@ -53,7 +53,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li><a href="" ><span class='glyphicon glyphicon-user' ></span> <%=session.getAttribute("userid")%></a></li>
-         <li><a href="${pageContext.request.contextPath}/login/logout.jsp"  ><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+         <li><a href="${pageContext.request.contextPath}/login/logout.jsp"  ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div>
   </div>

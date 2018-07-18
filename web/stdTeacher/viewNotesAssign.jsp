@@ -25,7 +25,7 @@
         <title></title>
     </head>
     <br>
-    <div class="container-fluid">
+    <div class="container">
     <body>
    <% 
   String subid=request.getParameter("subjects");
@@ -35,31 +35,24 @@
             "root", null);
     Statement st = con.createStatement();
     ResultSet rs;
-    rs = st.executeQuery("select file, first_name, last_name, DATE(uploaded_date) as date, deadline from newassignment a inner join teacher u on a.teacher_id=u.id where a.subject_id='" + subid + "'");
+    rs = st.executeQuery("select file,DATE(uploaded_date) as date, deadline from newassignment a inner join teacher u on a.teacher_id=u.id where a.subject_id='" + subid + "'");
    %>
     <table class="table table-striped table-hover ">
     <tr class="active">
        <th >Filename</th>
-      <th >First Name</th>
-      <th >Last Name</th>
        <th>Uploaded Date</th>
         <th>Deadline</th>
     </tr>
   <%  
     while( rs.next()){
     String filename=rs.getString("file");
-    String firstname=rs.getString("first_name");
-    String lastname=rs.getString("last_name");
     String date=rs.getString("date");
   String deadline=rs.getString("deadline");%>
     <tr >
-      <td><a href="<%out.print(filePath+filename); %>">
+      <td><a href="<%out.print(filePath+filename); %>" download>
     <%
     out.print(filename);
     %></a></td>
-      <td><%
-    out.print(firstname); %></td>
-      <td><% out.print(lastname); %></td>
       <td><%     out.print(date); %></td>
       <td><%     out.print(deadline); %></td>
     </tr>

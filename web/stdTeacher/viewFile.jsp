@@ -51,7 +51,7 @@
     String lastname=rs.getString("last_name");
     String date=rs.getString("date");%>
     <tr >
-      <td><a href="<%out.print(filePath+filename); %>">
+      <td><a href="<%out.print(filePath+filename); %>" download>
     <%
     out.print(filename);
     %></a></td>
